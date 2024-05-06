@@ -13,6 +13,12 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
   })
 
   if(!accounts) return;
+  if (!loggedIn) {
+    console.error('User is not logged in'); // Log an error message
+    // Handle the case where the user is not logged in (e.g., redirect to sign-in page)
+    return;
+  }
+  
   
   const accountsData = accounts?.data;
   const appwriteItemId = (id as string) || accountsData[0]?.appwriteItemId;
